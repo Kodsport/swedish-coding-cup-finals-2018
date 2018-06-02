@@ -1,0 +1,37 @@
+\problemname{Kubb}
+Apart from \emph{Liar's dice}, another game that Simon likes is the traditional Swedish game of Kubb,
+also known as ``Viking chess''.
+The exact rules of Kubb are complex, and vary from household to household.
+However, one aspect always remains the same, which is that of hitting the opposing team's base line of Kubbs.
+
+Your opponent has placed $N$ Kubbs in a line, with a constant distance between them.
+We can refer to the Kubbs' positions as $1, 2, \dots, N$.
+Your aim is to throw batons at these to strike them down, and
+you want to do this with as few throws as possible.
+
+However, your aim is not perfect. When you throw a baton at a position $x$ (which can be any integer),
+with probability $p_a$ you will hit the Kubb (if any) at position $x-1$,
+with probability $p_b$ you will hit the one at position $x$, and
+with probability $p_c$ the one at position $x+1$.
+
+If you decide optimally in each step how to throw your batons,
+how few throws do you need on average to strike down all the Kubbs?
+
+\section*{Input}
+The first line of input contains the positive integer $N$.
+The second line of input contains the three numbers $p_a, p_b, p_c$ ($0 \le p_a, p_b, p_c$, $0 < p_a + p_b + p_c \le 1$),
+each given with at most $5$ decimal places.
+
+\section*{Output}
+Output a single line -- the minimum expected number of throws needed to strike down all the Kubbs.
+The answer should be correct with an absolute or relative precision of $10^{-6}$.
+
+\section*{Scoring}
+\begin{itemize}
+  \item $N = 5$, $p_a = p_c = 0$
+  \item $1 \le N \le 10$, $p_b = 0$
+  \item $1 \le N \le 30$
+  \item $1 \le N \le 100$
+\end{itemize}
+
+% Sample explanation: something about intentionally throwing out of bounds

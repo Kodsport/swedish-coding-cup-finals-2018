@@ -1,0 +1,35 @@
+\problemname{Exotic Fruit}
+Nicole wants to get into the market of exotic fruit.
+She is planning to sell up to $N$ fruits this year, but she hasn't yet decided which kinds.
+She has seeds for $K$ different kinds, which she can plant any number of fruits of.
+
+However, planting fruits uses space, water, fertilizer, etc., and thus costs money.
+Also, the exotic fruit market has diminishing returns on investment.
+A basic requirement for a fruit to be ``exotic'' is that it is rare -- in fact, the
+resale price for a fruit of type $i$ is $c_i / a_i$, where $c_i$ is a constant
+(dependent on e.g. how cool the fruit looks and how it tastes), and $a_i$ is the number
+of fruits of that type on the market. (If $a_i = 0$, the price is undefined.)
+
+For the fruit type $i$ we are also given the numbers $b_i$ -- the cost of planting one
+such fruit, and $d_i$ -- the number of such fruits already on the market.
+Thus, the win Nicole makes by planting $x$ plants of type $i$ is
+
+\[ x c_i / (d_i + x) - x b_i. \]
+
+How much money can Nicole make on exotic fruit, if she can plant up to $N$ fruits?
+
+\section*{Input}
+The first line of input contains the two positive integers $N, K$ -- the maximum number of fruits
+Nicole wants to sell this year, and the number of kinds of fruits she has seeds for.
+
+Etc. ($K$ lines, $b_i, c_i, d_i$)
+
+\section*{Output}
+Output a single number, the maximum blah. Precision blah.
+
+Subtasks:
+* all $d_i = 0$
+* all $b_i = 0$
+* $K = 1$
+* $N \le 10^5$
+* $N \le 10^{15}$

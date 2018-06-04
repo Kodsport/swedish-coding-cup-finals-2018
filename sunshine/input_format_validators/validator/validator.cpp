@@ -6,7 +6,7 @@ void run() {
 	int k = Int(1, Arg("k"));
 	Endl();
 
-	assert(k <= m);
+	assert(k <= n);
 
 	SpacedFloats(n, 0.0, 1.0);
 }

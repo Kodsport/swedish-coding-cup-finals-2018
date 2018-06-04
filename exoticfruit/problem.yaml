@@ -1,0 +1,7 @@
+author: Simon Lindholm, Nicole Hedblom
+source: Swedish Coding Cup Finals 2018
+license: cc by-sa
+type: scoring
+grading:
+    objective: max
+validator_flags: float_tolerance 1e-6

@@ -1,0 +1,9 @@
+author: Simon Lindholm
+source: Swedish Coding Cup Finals 2018
+license: cc by-sa
+type: scoring
+grading:
+    objective: max
+limits:
+    time_multiplier: 3
+validator_flags: float_tolerance 1e-5

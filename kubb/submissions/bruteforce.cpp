@@ -13,7 +13,7 @@ const double inf = 1.0 / 0.0;
 
 double A, B, C;
 
-double bruteforce(int N, bool ignMiddle = false) {
+double bruteforce(int N) {
 	double d = 1 - A - B - C;
 	assert(0 <= A);
 	assert(0 <= B);
@@ -28,12 +28,7 @@ double bruteforce(int N, bool ignMiddle = false) {
 		int mask2 = mask << 2;
 		double res = inf;
 		int first = -1, last = - 1;
-		if (ignMiddle) rep(i,0,N) if (mask & (1 << i)) {
-			if (first == -1) first = i;
-			last = i;
-		}
 		rep(i,-1,N+1) if (mask2 & (canhit << (i+1))) {
-			if (ignMiddle && first + 3 < i && i < last - 3) continue;
 			double miss = d;
 			double e2 = 0;
 			if (mask2 & (1 << (i+1))) e2 += A * dp[mask &~ (1 << (i - 1))];

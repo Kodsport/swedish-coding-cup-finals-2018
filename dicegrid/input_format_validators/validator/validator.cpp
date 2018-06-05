@@ -1,21 +1,23 @@
 #include "validator.h"
 
+typedef long long ll;
+
 void run() {
-	int n = Int(1, Arg("n"));
+	ll n = Int(1, Arg("n"));
 	Space();
-	int m = Int(1, Arg("m"));
+	ll m = Int(1, Arg("m"));
 	Space();
 	int k = Int(0, Arg("k"));
 	Endl();
 	assert(n > 1 || m > 1);
 
-	bool exact = Arg("exact");
+	bool exact = Arg("strict");
 	if (exact) assert(n == 2);
-	map<pair<int, int>, int> seen;
+	map<pair<ll, ll>, int> seen;
 	for (int i = 0; i < k; i++) {
-		int y = Int(1, n);
+		ll y = Int(1, n);
 		Space();
-		int x = Int(1, m);
+		ll x = Int(1, m);
 		Endl();
 		assert(!(x == 1 && y == 1));
 		assert(!(x == m && y == n));

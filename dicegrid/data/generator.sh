@@ -3,13 +3,13 @@ PPATH=$(realpath ..)
 . ../../testdata_tools/gen.sh
 
 setup_dirs
-use_solution dp_sl.cpp
+use_solution dp_fancy_sl.cpp
 
 compile gen_random.py
 compile gen_two.py
 
 samplegroup
-limits n=20 m=20 k=10
+limits n=20 m=20 k=10 strict=0
 sample 1
 sample 2
 sample 3

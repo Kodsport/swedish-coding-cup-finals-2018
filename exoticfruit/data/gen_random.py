@@ -24,14 +24,10 @@ for _ in range(k-same):
 	b = random.randint(0, blim)
 	c = random.randint(0, 1e9)
 	d = random.randint(0, dlim)
-	fruits.append[(b,c,d)]
+	fruits.append((b,c,d))
 
 for _ in range(k-same, k):
-	i = random.randrange(0, k-same)
-	b = fruits[i][0]
-	c = fruits[i][1]
-	d = fruits[i][2]
-	fruits.append((b,c,d))
+	fruits.append(fruits[random.randrange(0,k-same)])
 
 print(n, k)
 for i in range(0,k):

@@ -32,5 +32,6 @@ for _ in range(k-s, k):
 	d = fruits[i][2]
 	fruits.append[(b,c,d)]
 
+print(n, k)
 for i in range(0,k):
 	print(fruits[i][0], fruits[i][1], fruits[i][2])

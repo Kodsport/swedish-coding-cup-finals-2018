@@ -1,0 +1,8 @@
+INT(1, 1000, r) SPACE INT(1, 1000, c) NEWLINE
+REP(r)
+    REP(c)
+        MATCH("*.")
+    END
+    NEWLINE
+END
+EOF

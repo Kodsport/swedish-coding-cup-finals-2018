@@ -33,7 +33,7 @@ int main() {
 		ll a = 0;
 		double b = 0;
 		rep(i,0,K) {
-			ll lo = 0, hi = 1LL << 50;
+			ll lo = 0, hi = 1LL << 40;
 			while (hi - lo > 1) {
 				ll mid = (lo + hi) / 2;
 				if (f2(i, mid) >= deriv) lo = mid;

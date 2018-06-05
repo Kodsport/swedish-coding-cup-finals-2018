@@ -64,16 +64,6 @@ const vector<pii> w = {
     pii(-1, -2),
 };
 
-int get_free(int r, int c, const vector<string>& G) {
-    vector<bool> used(4);
-    trav(it, w) {
-        char ch = G[r+it.first][c+it.second];
-        if (isdigit(ch)) used[ch - '1'] = true;
-    }
-    rep(i,0,4) if(!used[i]) return i + 1;
-    assert(false && "could not greedily color");
-}
-
 bool check_same(int r, int c, const vector<string>& G) {
     char w = G[r][c];
     rep(dr,-1,2) rep(dc,-1,2) if (G[r+dr][c+dc] != w) return false;
@@ -91,20 +81,19 @@ bool check_surround_different(int r, int c, const vector<string>& G) {
 void check_solution(int R, int C, vector<string>& inp, vector<string>& ans, feedback_function feedback) {
     // check same squares are tilled
     rep(i,0,R) rep(j,0,C) {
-        if (inp[i][j] == '*' && ans[i][j] != '*') feedback("row %d, col %d should be stone", i, j);
-        if (inp[i][j] == '.' && !isdigit(ans[i][j])) feedback("row %d, col %d should be a seed", i, j);
+        if (inp[i][j] == '*' && ans[i][j] != '*') feedback("row %d, col %d should be stone", i-1, j-1);
+        if (inp[i][j] == '.' && !isdigit(ans[i][j])) feedback("row %d, col %d should be a seed", i-1, j-1);
     }
 
     // check all 3x3 are same, and non-adjacent
-    rep(i,2,R) {
-        rep(j,2,C) {
+    rep(i,2,R-2) {
+        rep(j,2,C-2) {
             if (is_free(i, j, inp)) {
-                int w = get_free(i, j, inp);
-                rep(di,-1,2) rep(dj,-1,2) inp[i+di][j+dj] = '0' + w;
+                rep(di,-1,2) rep(dj,-1,2) inp[i+di][j+dj] = 'x';
 
-                if (!check_same(i, j, ans)) feedback("3x3 at %d, %d was not same seed", i, j);
+                if (!check_same(i, j, ans)) feedback("3x3 centered at %d, %d was not same seed", i-1, j-1);
 
-                if (!check_surround_different(i, j, ans)) feedback("3x3 at %d, %d had adjacent of same", i, j);
+                if (!check_surround_different(i, j, ans)) feedback("3x3 centered at %d, %d had adjacent of same color", i-1, j-1);
             }
         }
     }

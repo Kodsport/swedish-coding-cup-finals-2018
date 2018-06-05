@@ -4,3 +4,4 @@ license: cc by-sa
 type: scoring
 grading:
     objective: max
+validation: custom

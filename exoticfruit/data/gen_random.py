@@ -9,7 +9,7 @@ def cmdlinearg(name, default=None):
         if arg.startswith(name + "="):
             return arg.split("=")[1]
     assert default is not None, name
-	return default
+    return default
 
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
@@ -20,13 +20,13 @@ dlim = int(cmdlinearg('d'))
 
 fruits = []
 
-for _ in range(k-s):
+for _ in range(k-same):
 	b = random.randint(0, blim)
 	c = random.randint(0, 1e9)
 	d = random.randint(0, dlim)
 	fruits.append[(b,c,d)]
 
-for _ in range(k-s, k):
+for _ in range(k-same, k):
 	i = random.randrange(0, k-same)
 	b = fruits[i][0]
 	c = fruits[i][1]

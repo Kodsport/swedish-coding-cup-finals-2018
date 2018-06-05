@@ -5,5 +5,5 @@ type: scoring
 grading:
     objective: max
 limits:
-    time_multiplier: 3
+    time_multiplier: 2.4
 validator_flags: float_tolerance 1.1e-5

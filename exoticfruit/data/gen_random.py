@@ -20,13 +20,13 @@ dlim = int(cmdlinearg('d'))
 fruits = []
 
 for _ in range(k-s):
-	b = rand.randint(0, blim)
-	c = rand.randint(0, 1e9)
-	d = rand.randint(0, dlim)
+	b = rand.randrange(0, blim)
+	c = rand.randrange(0, 1e9+1)
+	d = rand.randrange(0, dlim)
 	fruits.append[(b,c,d)]
 
 for _ in range(k-s, k):
-	i = rand.randint(0, k-s-1)
+	i = rand.randrange(0, k-s)
 	b = fruits[i][0]
 	c = fruits[i][1]
 	d = fruits[i][2]

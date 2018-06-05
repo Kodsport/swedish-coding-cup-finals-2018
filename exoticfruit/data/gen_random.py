@@ -33,4 +33,4 @@ for _ in range(k-s, k):
 	fruits.append[(b,c,d)]
 
 for i in range(0,k):
-	print(fruits[i][0], fruits[i][1], fruits[i][2], '\n')
+	print(fruits[i][0], fruits[i][1], fruits[i][2])

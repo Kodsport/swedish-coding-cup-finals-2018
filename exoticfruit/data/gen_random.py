@@ -14,7 +14,7 @@ def cmdlinearg(name, default=None):
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
 k = int(cmdlinearg('k'))
-s = int(cmdlinearg('s'))
+same = int(cmdlinearg('s'))
 blim = int(cmdlinearg('b'))
 dlim = int(cmdlinearg('d'))
 
@@ -27,7 +27,7 @@ for _ in range(k-s):
 	fruits.append[(b,c,d)]
 
 for _ in range(k-s, k):
-	i = random.randrange(0, k-s)
+	i = random.randrange(0, k-same)
 	b = fruits[i][0]
 	c = fruits[i][1]
 	d = fruits[i][2]

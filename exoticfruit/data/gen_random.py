@@ -31,7 +31,7 @@ for _ in range(k-same, k):
 	b = fruits[i][0]
 	c = fruits[i][1]
 	d = fruits[i][2]
-	fruits.append[(b,c,d)]
+	fruits.append((b,c,d))
 
 print(n, k)
 for i in range(0,k):

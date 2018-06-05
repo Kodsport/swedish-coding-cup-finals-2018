@@ -5,30 +5,29 @@ At the farm, you then grow crops that you can cook fancy meals out of
 
 When growing crops, you plant seeds at various locations in the $R \times C$ grid that your farm consists of.
 In total, you have an infinite amount of seeds for four different kinds of plants. 
-When planting seeds, you take 9 seeds for the same kind of plant and place them in a $3 \times 3$ grid that does already contain any seeds.
-Furthermore, some locations in the grid are occupied by rocks, where seeds cannot be planted.
-To avoid waste, you may not plant any seeds in a $3 \times 3$ grid containing a rock either.
+
+Karin has tilled some squares on her farm, on which seeds can be planted.
+When planting seeds, you take 9 seeds for the same kind of plant and place them in a tilled $3 \times 3$ grid that does already contain any seeds.
 
 Finally, to avoid potential crop disease from spreading, no two patches of seeds in the grid that shares an edge may have a seed of the same crop placed in it.
 Otherwise, this could allow a disease affecting one $3 \times 3$ patch of crops to spread to the patch it shares an edge with.
 
-Given the size of Karin's in-game farm and the location of all the rocks on it, can you help her determine what seeds to place where in order to plant \emph{as many seeds as possible} subject to these constraints?
+Given the size of Karin's in-game farm and what squares are tilled, can you help her determine what seeds to place where in order to plant a seed \emph{on every tilled square} subject to these constraints?
 
 \section*{Input}
 The first line of input contains the two integers $1 \le R, C \le 1\,000$, the height and width of Karin's farm.
 
 The next $R$ lines each contains $C$ characters describing Karin's farm.
-Each character is either a \texttt{.} which denotes an empty square, or a \texttt{*} which denotes a rock.
+Each character is either a \texttt{.} which denotes a tilled square, or a \texttt{*} which denotes a non-tilled square.
 
 \section*{Output}
 Output $R$ lines, each containing $C$ characters describing how Karin should plant her crops.
-If a square has no seeds, output a \texttt{.}.
-If it has a rock, output a \texttt{*}.
+If a square was non-tilled, output a \texttt{*}.
 Otherwise, output a digit \texttt{1-4} depending on which of the four kinds of seeds was planted on the square.
 
 \section*{Scoring}
 \begin{itemize}
-  \item There are no rocks.
+  \item All squares are tilled.
   \item $R = 6$
   \item No additional constraints.
 \end{itemize}

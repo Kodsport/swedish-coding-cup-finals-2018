@@ -6,4 +6,4 @@ grading:
     objective: max
 limits:
     time_multiplier: 3
-validator_flags: float_tolerance 1e-5
+validator_flags: float_tolerance 1.1e-5

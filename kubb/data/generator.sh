@@ -36,17 +36,17 @@ tc bsmall-special3 gen_random mode=random n=2 zeroes=c
 tc bsmall-special4 gen_random mode=random n=2 zeroes=bc
 
 group group3 10
-limits mode=standard n=27
+limits mode=standard n=26
 include_group group2
-tc medium-evil1 gen_random mode=evil n=25
+tc medium-evil1 gen_random mode=evil n=26
 tc medium-evil2 gen_random mode=evil n=26
-tc medium-evil3 gen_random mode=evil n=27
-tc medium-evil4 gen_random mode=evil n=27
-tc medium-rand1 gen_random mode=random n=23
-tc medium-rand2 gen_random mode=random n=24
-tc medium-rand3 gen_random mode=random n=25
-tc medium-rand4 gen_random mode=random n=26
-tc medium-rand5 gen_random mode=random n=27
+tc medium-evil3 gen_random mode=evil n=25
+tc medium-evil4 gen_random mode=evil n=25
+tc medium-rand1 gen_random mode=random n=22
+tc medium-rand2 gen_random mode=random n=23
+tc medium-rand3 gen_random mode=random n=24
+tc medium-rand4 gen_random mode=random n=25
+tc medium-rand5 gen_random mode=random n=26
 
 group group4 10
 limits mode=bad n=100

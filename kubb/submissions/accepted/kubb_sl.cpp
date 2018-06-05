@@ -13,7 +13,7 @@ typedef vector<int> vi;
 
 const double inf = 1.0 / 0.0;
 #ifndef LIM
-const int LIM = 27;
+const int LIM = 26;
 #endif
 
 double rec(ll bits, int N, double A, double B, double C);

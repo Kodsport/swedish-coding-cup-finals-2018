@@ -9,7 +9,9 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-const double inf = 1.0 / 0.0;
+#define double float
+
+const double inf = (double)(1.0 / 0.0);
 
 double A, B, C;
 
@@ -18,13 +20,17 @@ double bruteforce(int N) {
 	assert(0 <= A);
 	assert(0 <= B);
 	assert(0 <= C);
-	assert(-1e-9 <= d);
+	assert((double)-1e-9 <= d);
 	assert(d < 1);
 	assert(N < 30);
 	int canhit = (A > 0) | (B > 0) << 1 | (C > 0) << 2;
 
 	vector<double> dp(1 << N);
 	rep(mask, 1, (1 << N)) {
+		if (mask % 2 == 0) {
+			dp[mask] = dp[mask >> 1];
+			continue;
+		}
 		int mask2 = mask << 2;
 		double res = inf;
 		rep(i,-1,N+1) if (mask2 & (canhit << (i+1))) {
@@ -51,6 +57,7 @@ int main() {
 	cin >> N;
 	double a, b, c;
 	cin >> a >> b >> c;
+	assert(N <= 26);
 	::A = a;
 	::B = b;
 	::C = c;

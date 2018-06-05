@@ -5,9 +5,9 @@ His newest one is called \emph{Dice Grid}.
 
 Dice Grid is a single-player game, where the goal is to maximize one's score.
 It is played on a $N \times M$ grid of squares.
-At the start of the game, the player places a regular 6-sided die on the top left square,
+At the start of the game, the player places a regular 6-sided die on the top-left square,
 and designates a bunch of squares at random as forbidden.
-The goal is to move the die to the bottom right square, by rolling it down $N-1$ times and to the right $M-1$ times, without touching any of the forbidden squares.
+The goal is to move the die to the bottom-right square, by rolling it down $N-1$ times and to the right $M-1$ times, without touching any of the forbidden squares.
 % TODO: figure of this
 For every of the $N + M - 1$ squares that the dice is placed on, the score of that square is the number that shows on top of the die when it was placed on that square.
 The score of the game is the sum of the scores of all those squares.
@@ -17,18 +17,22 @@ What is the maximum score Simon can achieve, assuming he plays optimally?
 When the die is placed on the starting square, the number $1$ is at the bottom, $6$ is at the top, $2$ is at the front of the die (meaning it would be at the bottom if the die was rolled to the next row), $4$ is on the right side of the die (meaning it would be at the bottom if the die was rolled to the next column), $3$ is to the left of the die, and $5$ is at the back of the die.
 
 \section*{Input}
-The first line of input contains the three integers $N, M$ and $K$ -- the number of rows and columns of the grid, and the number of blocked squares, respectively.
-The next $K$ lines of input each contain two integers $r, c$ ($1 \le r \le N, 1 \le c \le M$), denoting that the square on row $r$, column $c$ is blocked.
+The first line of input contains the three integers $N, M$ and $K$ -- the number of rows and columns of the grid, and the number of forbidden squares, respectively.
+The next $K$ lines of input each contain two integers $r, c$ ($1 \le r \le N, 1 \le c \le M$), denoting that the square on row $r$, column $c$ is forbidden.
+
+No square will be marked as forbidden twice, and neither the top-left nor the bottom-right corner will be marked as forbidden.
+It is guaranteed that the top-left and bottom-right squares do not coincide (i.e., either $N$ or $M$ is larger than $1$).
 
 \section*{Output}
 Output a single line -- the maximum score Simon can obtain.
-If it is impossible to roll the dice to the bottom-right corner, output ``impossible''.
+If it is impossible to roll the dice to the bottom-right corner without touching any forbidden squares, output ``impossible''.
 
 \section*{Scoring}
 \begin{itemize}
-  \item $N = 1, 1 \le M \le 10^{15}, K = 0$
+  \item $N = 1, 2 \le M \le 10^{15}, K = 0$
   \item $N = 2, 1 \le M \le 10^5, K = 0$
   \item $N = 2, 1 \le M \le 10^{15}, 0 \le K \le 50$
   \item $1 \le N, M \le 10^{15}, K = 0$
   \item $1 \le N, M \le 10^{15}, 0 \le K \le 50$
+  \item $1 \le N, M \le 10^{15}, 0 \le K \le 30\,000$
 \end{itemize}

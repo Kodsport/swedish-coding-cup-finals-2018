@@ -7,6 +7,7 @@ use_solution dp_fancy_sl.cpp
 
 compile gen_random.py
 compile gen_two.py
+compile gen_grids.py
 
 samplegroup
 limits n=20 m=20 k=10 strict=0
@@ -65,12 +66,24 @@ limits n=1e15 m=1e15 k=50 strict=0
 include_group group4
 tc twoblock-imp1
 tc large-1 gen_random k=50 n=123123123123123 m=123123123123124
-# TODO gen_grids
+tc large-2 gen_grids k=40 n=123123123123123 m=123123123123124 mode=pad extra=10
+tc large-3 gen_grids k=40 n=123123123123123 m=123123123123124 mode=ruin,pad extra=10
+tc large-4 gen_grids k=50 n=10 m=123123123123124 mode=pad,ruin
+tc large-5 gen_grids k=50 n=10 m=123123123123124
+tc large-6 gen_grids k=50 n=123123123123124 m=10 mode=twopath
 
 group group6 10
-limits n=1e15 m=1e15 k=30000 strict=0
+limits n=1e15 m=1e15 k=100000 strict=0
+include_group group5
 tc twoblock-imp1
-tc huge-1 gen_random k=30000 n=123123123123123 m=123123123123124
-# TODO gen_grids
+tc huge-1 gen_random k=100000 n=123123123123123 m=123123123123124
+tc huge-2 gen_grids k=70000 n=123123123123124 m=123123123123124 mode=pad extra=29000
+tc huge-3 gen_grids k=70000 n=123123123123123 m=123123123123123 mode=ruin,pad extra=29000
+tc huge-4 gen_grids k=100000 n=30000 m=123123123123124 mode=ruin,pad
+tc huge-5 gen_grids k=100000 n=30001 m=123123123123125
+tc huge-6 gen_grids k=100000 n=18001 m=123123123123124
+tc huge-7 gen_grids k=100000 n=15401 m=123123123123123 twos=1
+tc huge-8 gen_grids k=100000 n=18002 m=123123123123123 twos=2
+tc huge-9 gen_grids k=100000 n=123123123123124 m=18000 mode=twopath
 
 cleanup_programs

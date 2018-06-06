@@ -3,7 +3,7 @@ PPATH=$(realpath ..)
 . ../../testdata_tools/gen.sh
 
 setup_dirs
-use_solution dp_fancy_sl.cpp
+use_solution fancy_sl.cpp
 
 compile gen_random.py
 compile gen_two.py

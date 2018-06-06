@@ -9,6 +9,10 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
+#ifndef MARGIN
+const int MARGIN = 6;
+#endif
+
 void smax(ll& a, ll b) { a = max(a, b); }
 void smax(int& a, int b) { a = max(a, b); }
 
@@ -117,7 +121,7 @@ int main() {
 		trav(pa, m) {
 			assert(pa.first >= last);
 			ll dif = pa.first - last;
-			ll skip = max((pa.first - last - 8) / 4 * 4, 0LL);
+			ll skip = max((pa.first - last - MARGIN) / 4 * 4, 0LL);
 			last = pa.first;
 			cur += dif - skip;
 			addAns += skip * 7 / 2;
@@ -168,15 +172,18 @@ int main() {
 
 		ivs2.clear();
 		set<ll>& bl = blocked[i];
+		vector<ll> BL(all(bl));
+		int j = 0, js = sz(BL);
 		trav(iv, intervals) {
 			for (;;) {
 				if (iv.from == iv.to) break;
-				auto it = bl.lower_bound(iv.from);
-				if (it != bl.end() && *it < iv.to) { // split
-					if (iv.from != *it)
-						ivs2.push_back(Iv{iv.from, *it, iv.bits, 0});
-					ivs2.push_back(Iv{*it, *it + 1, 0, 1});
-					iv.from = *it + 1;
+				if (j != js && BL[j] < iv.to) { // split
+					ll it = BL[j];
+					j++;
+					if (iv.from != it)
+						ivs2.push_back(Iv{iv.from, it, iv.bits, 0});
+					ivs2.push_back(Iv{it, it + 1, 0, 1});
+					iv.from = it + 1;
 				} else {
 					iv.occ = 0;
 					ivs2.push_back(iv);
@@ -205,7 +212,10 @@ int main() {
 				continue;
 			}
 			if (iv.bits == 0) {
-				for (ll i = iv.from; i < iv.to; i++) {
+				if (lastBits == 0) {
+					ivs2.push_back(iv);
+				}
+				else for (ll i = iv.from; i < iv.to; i++) {
 					lastBits = stepRight(lastBits);
 					ivs2.push_back(Iv{i, i+1, lastBits, 0});
 				}
@@ -259,5 +269,6 @@ int main() {
 		ret += addAns;
 		cout << ret << endl;
 		cerr << "trivial answer: " << (ret == solve(N-1, M-1) + addAns ? "yes" : "no") << endl;
+		cerr << "allowed subset size: " << __builtin_popcount(bits) << endl;
 	}
 }

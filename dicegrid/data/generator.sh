@@ -20,11 +20,9 @@ group group1 10
 limits n=1 m=1e15 k=0 strict=0
 tc line-1 gen_random k=0 n=1 m=2
 tc line-2 gen_random k=0 n=1 m=1000000000000000
-tc line-3 gen_random k=0 n=1 m=999999999999999
+tc line-3 gen_random k=0 n=1 m=123126371231123
 tc line-4 gen_random k=0 n=1 m=999999999999998
 tc line-5 gen_random k=0 n=1 m=999999999999997
-tc line-6 gen_random k=0 n=1 m=999999999999996
-tc line-7 gen_random k=0 n=1 m=123126371231123
 
 group group2 10
 limits n=2 m=1e5 k=0 strict=1
@@ -63,6 +61,7 @@ tc empty-4 gen_random k=0 n=123123123123124 m=123123123123123
 
 group group5 10
 limits n=1e15 m=1e15 k=50 strict=0
+include_group group3
 include_group group4
 tc twoblock-imp1
 tc large-1 gen_random k=50 n=123123123123123 m=123123123123124
@@ -74,8 +73,15 @@ tc large-6 gen_grids k=50 n=123123123123124 m=10 mode=twopath mode=nopad
 
 group group6 10
 limits n=1e15 m=1e15 k=100000 strict=0
-include_group group5
+tc empty-1
+tc empty-tall1
 tc twoblock-imp1
+tc large-1
+tc large-2
+tc large-3
+tc large-4
+tc large-5
+tc large-6
 tc huge-1 gen_random k=100000 n=123123123123123 m=123123123123124
 tc huge-2 gen_grids k=99000 n=123123123123124 m=123123123123124 extra=29000
 tc huge-3 gen_grids k=99000 n=123123123123123 m=123123123123123 mode=ruin extra=29000 seed=125
@@ -87,5 +93,7 @@ tc huge-8 gen_grids k=100000 n=18002 m=123123123123123 twos=2 extra=1000 seed=8
 tc huge-9 gen_grids k=100000 n=18002 m=123123123123126 twos=1 extra=1000 mode=nopad seed=16
 tc huge-10 gen_grids k=100000 n=18003 m=123123123123126 twos=1 extra=1000
 tc huge-11 gen_grids k=100000 n=123123123123124 m=18000 mode=twopath seed=27
+tc huge-12 gen_grids k=100000 n=123123123123124 m=28000 mode=twopath each=500 seed=1
+tc huge-13 gen_grids k=100000 n=123123123123124 m=28000 mode=twopath each=500 seed=2
 
 cleanup_programs

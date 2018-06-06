@@ -49,7 +49,7 @@ top = 0
 left = 0
 bottom = n
 right = m
-each = min(n, m, maxk) // 10 + 2
+each = int(cmdlinearg('each', min(n, m, maxk) // 10 + 2))
 forbid = 0
 forbid2 = 0
 

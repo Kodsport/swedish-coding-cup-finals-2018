@@ -268,7 +268,10 @@ int main() {
 		ret += 7 * (N-1 + M-1) / 2;
 		ret += addAns;
 		cout << ret << endl;
-		cerr << "trivial answer: " << (ret == solve(N-1, M-1) + addAns ? "yes" : "no") << endl;
+		ll trivialAns = solve(N-1, M-1) + addAns;
+		cerr << "trivial answer: " << (ret == trivialAns ? "yes" : "no");
+		if (ret != trivialAns) cerr << " (diff: " << (trivialAns - ret) << ")";
+		cerr << endl;
 		cerr << "allowed subset size: " << __builtin_popcount(bits) << endl;
 	}
 }

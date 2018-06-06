@@ -15,6 +15,10 @@ n = int(cmdlinearg('n'))
 m = int(cmdlinearg('m'))
 maxk = int(cmdlinearg('k'))
 mode = cmdlinearg('mode', '')
+extra = int(cmdlinearg('extra', 0))
+maxk -= extra
+if 'ruin' in mode:
+    maxk -= 1
 
 blocked = []
 
@@ -49,17 +53,21 @@ each = min(n, m, maxk) // 10 + 2
 forbid = 0
 forbid2 = 0
 
+lines = []
+all_lines = []
+
 if 'twopath' in mode:
     h = random.randint(1, right-left-2)
     cover(top+1, left+1, top+h+1, right-1)
     top += h+1
     right -= 1
     forbid2 = 1 << 3
+    all_lines.append((0, 0, 1, right))
+    all_lines.append((1, right-1, bottom, right))
 
 twosat = random.sample(range(1, 10), int(cmdlinearg('twos', 0)))
 
 count = 0
-lines = []
 while bottom - top > 1 and right - left > 1:
     side = random.randrange(4)
     if (forbid | forbid2) & (1 << side):
@@ -99,6 +107,8 @@ while bottom - top > 1 and right - left > 1:
     else:
         assert False
 
+    all_lines.append(line)
+
     if len(blocked) >= maxk-1:
         print("large gap", file=sys.stderr)
         break
@@ -106,18 +116,29 @@ while bottom - top > 1 and right - left > 1:
     if line is not None and pad == 1:
         lines.append(line)
 
-assert len(blocked) <= maxk
-maxk += int(cmdlinearg('extra', 0))
+if bottom - top == 1 or right - left == 1:
+    all_lines.append((top, left, bottom, right))
 
-if 'pad' in mode:
+assert len(blocked) <= maxk
+maxk += extra
+
+if 'nopad' not in mode:
     blockeds = set(blocked)
     while len(blocked) < maxk:
         r = random.randrange(n)
         c = random.randrange(m)
-        if (r, c) not in blockeds:
+        if r == c == 0:
+            continue
+        if r == n-1 or c == m-1:
+            continue
+        if (r, c) in blockeds:
+            continue
+        for line in all_lines:
+            if line[0] <= r < line[2] and line[1] <= c < line[3]:
+                break
+        else:
             blocked.append((r, c))
             blockeds.add((r, c))
-k = len(blocked)
 
 if 'ruin' in mode:
     line = random.choice(lines)
@@ -125,9 +146,11 @@ if 'ruin' in mode:
     x = random.randrange(line[1], line[3])
     blocked.append((y, x))
 
+k = len(blocked)
+
 random.shuffle(blocked)
 
-if random.choice([True, False]):
+if True: # random.choice([True, False]):
     print(n, m, k)
     for (r, c) in blocked:
         print(r+1, c+1)

@@ -8,6 +8,7 @@ use_solution js_1.cpp
 compile gen_norock.py
 compile gen_r6.py
 compile gen_random.py
+compile gen_special.py
 
 samplegroup
 limits r=1000 c=1000 mode=general
@@ -35,6 +36,7 @@ group group3 10
 limits r=1000 c=1000 mode=general
 include_group group1
 include_group group2
+tc aspecial-1 gen_special case=0
 tc random-1 gen_random r=1000 c=1000 dens=10
 tc random-2 gen_random r=1000 c=1000 dens=10
 tc random-3 gen_random r=1000 c=1000 dens=80

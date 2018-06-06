@@ -14,7 +14,7 @@ limits mode=standard n=100
 # sample 3
 # sample 4
 
-group group1 10
+group group1 5
 limits mode=trivial n=5
 tc atrivial-1 gen_random mode=random n=5 zeroes=ac
 tc atrivial-2 gen_random mode=random n=5 zeroes=ac
@@ -35,7 +35,7 @@ tc bsmall-special2 gen_random mode=random n=1 zeroes=b
 tc bsmall-special3 gen_random mode=random n=2 zeroes=c
 tc bsmall-special4 gen_random mode=random n=2 zeroes=bc
 
-group group3 10
+group group3 15
 limits mode=standard n=26
 include_group group2
 tc medium-evil1 gen_random mode=evil n=26
@@ -48,7 +48,7 @@ tc medium-rand3 gen_random mode=random n=24
 tc medium-rand4 gen_random mode=random n=25
 tc medium-rand5 gen_random mode=random n=26
 
-group group4 10
+group group4 20
 limits mode=bad n=100
 tc bsmall-special1
 tc xbad-2 gen_random mode=static n=99 values=0.6,0,0.4
@@ -56,7 +56,7 @@ tc xbad-3 gen_random mode=static n=100 values=0.4,0,0.6
 tc xbad-4 gen_random mode=static n=100 values=0.8,0,0.1
 tc xbad-5 gen_random mode=random n=90 zeroes=ab
 
-group group5 10
+group group5 30
 limits mode=standard n=100
 include_group group3
 include_group group4

@@ -32,7 +32,7 @@ tc r6-3 gen_r6 c=1000
 tc r6-4 gen_r6 c=1000
 tc r6-5 gen_r6 c=1000
 
-group group3 10
+group group3 20
 limits r=1000 c=1000 mode=general
 include_group group1
 include_group group2

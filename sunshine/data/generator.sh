@@ -11,7 +11,7 @@ samplegroup
 limits n=20 k=10
 sample 1
 
-group group1 50
+group group1 15
 limits n=1000 k=1000
 tc small-allzero gen_random n=1000 k=10 zeroes=1000
 tc small-tiny gen_random n=1 k=1
@@ -21,7 +21,7 @@ tc small-3 gen_random n=1000 k=10 ones=10 zeroes=10 larges=100 smalls=100
 tc small-4 gen_random n=1000 k=100 zeroes=10 larges=100 smalls=3
 tc small-5 gen_random n=1000 k=1000 ones=10
 
-group group2 50
+group group2 20
 limits n=4e5 k=4e5
 include_group group1
 tc large-allzero gen_random n=400000 k=10 zeroes=400000

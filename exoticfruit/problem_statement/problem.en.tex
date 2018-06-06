@@ -19,7 +19,7 @@ Thus, the win Nicole makes by planting $x$ plants of type $i$ is
 How much money can Nicole make on exotic fruit, if she can plant up to $N$ fruits?
 
 \section*{Input}
-The first line of input contains the two positive integers $N, K$ -- the maximum number of fruits
+The first line of input contains the two positive integers $N, K$ ($1 \le N \le 10^{15}, 1 \le K \le 10^5$) -- the maximum number of fruits
 Nicole wants to sell this year, and the number of kinds of fruits she has seeds for.
 
 The next $K$ lines of input described the fruits, and each contain three integers $b_i, c_i, d_i$ ($0 \le b_i, c_i, d_i \le 10^9$).
@@ -29,10 +29,16 @@ Output a single line -- the maximum amount of money Nicole can make by planting 
 The answer should have an absolute or relative error of at most $10^{-6}$.
 
 \section*{Scoring}
-\begin{itemize}
-  \item all $d_i = 0$
-  \item all $b_i = 0$
-  \item $K = 1$
-  \item $N \le 10^5$
-  \item $N \le 10^{15}$
-\end{itemize}
+Your solution will be tested on a set of test groups, each worth a number of points.
+To get the points for a test group you need to solve all test cases in the test group.
+Your final score will be the maximum score of a single submission.
+
+\noindent
+\begin{tabular}{| l | l | l | l |}
+\hline
+Group & Points & Constraints \\ \hline
+1     & 10     & All $d_i = 0$. \\ \hline
+2     & 15     & $K = 1$ \\ \hline
+3     & 15     & $N \le 10^5$ \\ \hline
+4     & 25     & No additional constraints. \\ \hline
+\end{tabular}

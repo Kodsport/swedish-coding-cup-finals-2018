@@ -50,12 +50,13 @@ int main() {
 
 	double lo = 0, hi = 1e10;
 	auto pa = g(lo);
+	assert(g(hi).first <= N);
 	if (pa.first <= N) {
 		cerr << "can plant everything: " << pa.first << " vs " << N << endl;
 		cout << setprecision(10) << fixed << pa.second << endl;
 		return 0;
 	} else {
-		cerr << "if we plant everything:" << endl;
+		cerr << "if we plant everything (n = " << pa.first << "):" << endl;
 		cerr << setprecision(10) << fixed << pa.second << endl;
 	}
 

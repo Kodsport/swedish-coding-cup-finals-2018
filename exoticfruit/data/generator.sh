@@ -40,6 +40,7 @@ limits n=1e15 k=1e4 b=1e9 d=1e9
 include_group group1
 include_group group2
 include_group group3
+tc large0 gen_random k=1e4 n=1e15 s=2 b=1e8 d=1e8
 tc large1 gen_random k=1e4 n=1e15 s=0 b=0 d=1e9
 tc large2 gen_random k=1e4 n=1e15 s=k-2 b=0 d=1e9
 tc large3 gen_random k=1e4 n=1e12 s=k*2//3 b=2 d=1e8

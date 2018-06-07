@@ -4,4 +4,4 @@ license: cc by-sa
 type: scoring
 grading:
     objective: max
-validator_flags: float_tolerance 1e-6
+validator_flags: float_tolerance 1e-8

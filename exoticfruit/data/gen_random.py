@@ -3,7 +3,6 @@
 import sys
 import random
 
-
 def cmdlinearg(name, default=None):
     for arg in sys.argv:
         if arg.startswith(name + "="):
@@ -12,15 +11,15 @@ def cmdlinearg(name, default=None):
     return default
 
 random.seed(int(cmdlinearg('seed', sys.argv[-1])))
-n = int(cmdlinearg('n'))
-k = int(cmdlinearg('k'))
-same = int(cmdlinearg('s'))
-blim = int(cmdlinearg('b'))
-clim = int(cmdlinearg('c', 1e9))
-dlim = int(cmdlinearg('d'))
+n = int(float(cmdlinearg('n')))
+k = int(float(cmdlinearg('k')))
+same = int(eval(cmdlinearg('s')))
+blim = int(float(cmdlinearg('b')))
+clim = int(float(cmdlinearg('c', 1e9)))
+dlim = int(float(cmdlinearg('d')))
+assert 0 <= same < k
 
-if same < 0:
-    same = k + same
+# add some with d = 0
 
 fruits = []
 

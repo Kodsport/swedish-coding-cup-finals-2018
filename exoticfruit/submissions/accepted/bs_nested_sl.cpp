@@ -33,8 +33,9 @@ int main() {
 	auto g = [&](double deriv) -> pair<ll, double> {
 		ll a = 0;
 		double b = 0;
+		ll huge = 1L << 60;
 		rep(i,0,K) {
-			ll lo = 0, hi = 1LL << 40;
+			ll lo = 0, hi = N + 10;
 			while (hi - lo > 1) {
 				ll mid = (lo + hi) / 2;
 				if (f2(i, mid) >= deriv) lo = mid;
@@ -42,20 +43,24 @@ int main() {
 			}
 			a += lo;
 			b += f(i, lo);
+			a = min(a, huge);
 		}
 		return {a, b};
 	};
 
-	double lo = 0, hi = 1e30;
+	double lo = 0, hi = 1e10;
 	auto pa = g(lo);
 	if (pa.first <= N) {
 		cerr << "can plant everything: " << pa.first << " vs " << N << endl;
 		cout << setprecision(10) << fixed << pa.second << endl;
 		return 0;
+	} else {
+		cerr << "if we plant everything:" << endl;
+		cerr << setprecision(10) << fixed << pa.second << endl;
 	}
 
 	assert(g(hi).first == 0);
-	rep(it,0,30*8) {
+	rep(it,0,80) {
 		double mid = (lo + hi) / 2;
 		if (g(mid).first <= N) hi = mid;
 		else lo = mid;

@@ -16,6 +16,7 @@ n = int(cmdlinearg('n'))
 k = int(cmdlinearg('k'))
 same = int(cmdlinearg('s'))
 blim = int(cmdlinearg('b'))
+clim = int(cmdlinearg('c', 1e9))
 dlim = int(cmdlinearg('d'))
 
 if same < 0:
@@ -25,13 +26,13 @@ fruits = []
 
 for _ in range(k-same):
     b = random.randint(0, blim)
-    c = random.randint(0, 1e9)
+    c = random.randint(0, clim)
     d = random.randint(0, dlim)
     fruits.append((b,c,d))
 
-for _ in range(k-same, k):
-    fruits.append(fruits[random.randrange(0,k-same)])
+for i in range(k-same, k):
+    fruits.append(fruits[random.randrange(i)])
 
 print(n, k)
-for i in range(0,k):
-    print(fruits[i][0], fruits[i][1], fruits[i][2])
+for i in range(k):
+    print(*fruits[i])

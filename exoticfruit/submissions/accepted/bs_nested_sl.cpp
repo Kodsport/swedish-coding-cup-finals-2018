@@ -15,19 +15,20 @@ int main() {
 	ll N;
 	int K;
 	cin >> N >> K;
-	vector<double> b(K), c(K), d(K);
+	vector<double> b(K), c(K), d(K), cd(K);
 	rep(i,0,K) {
 		cin >> b[i] >> c[i] >> d[i];
+		cd[i] = c[i] * d[i];
 	}
 
 	auto f = [&](int i, ll x) -> double {
 		if (!x) return 0;
-		return x * (c[i] / (d[i] + x) - b[i]);
+		return (double)x * (c[i] / (d[i] + (double)x) - b[i]);
 	};
 	auto f2 = [&](int i, ll x) -> double {
 		if (x == 1) return f(i, 1);
 		// return f(i, x) - f(i, x-1);
-		return c[i] * d[i] / (d[i] + x) / (d[i] + x - 1) - b[i];
+		return cd[i] / ((d[i] + (double)x) * (d[i] + (double)x - 1)) - b[i];
 	};
 	auto g = [&](double deriv) -> pair<ll, double> {
 		ll a = 0;
@@ -46,8 +47,10 @@ int main() {
 	};
 
 	double lo = 0, hi = 1e30;
-	if (g(lo).first <= N) {
-		cout << setprecision(10) << fixed << g(lo).second << endl;
+	auto pa = g(lo);
+	if (pa.first <= N) {
+		cerr << "can plant everything: " << pa.first << " vs " << N << endl;
+		cout << setprecision(10) << fixed << pa.second << endl;
 		return 0;
 	}
 
@@ -63,8 +66,8 @@ int main() {
 	assert(pa1.first > pa2.first);
 	assert(pa2.first <= N);
 	ll ndif = pa1.first - pa2.first;
-	double additionalCost = (pa1.second - pa2.second) / ndif;
+	double additionalCost = (pa1.second - pa2.second) / (double)ndif;
 	assert(additionalCost >= 0);
-	double res = pa2.second + additionalCost * (N - pa2.first);
+	double res = pa2.second + additionalCost * (double)(N - pa2.first);
 	cout << setprecision(10) << fixed << res << endl;
 }

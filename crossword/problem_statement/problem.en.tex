@@ -1,0 +1,44 @@
+\problemname{Crossword}
+Two of the Coding Cup judges, Johan and Simon, are both fans of crosswords.
+This recently culminated in them creating a \href{http://boi2018.progolymp.se/day4.pdf}{crossword of their own},
+for the Baltic Olympiad.
+
+Now for the Coding Cup, we ask you to do the same. There are a couple of rules a good crossword should obey:
+\begin{itemize}
+  \item All words should actually exist. To be precise, they should come from \href{http://codingcup.se/2018/wordlist.txt}{this} English-language wordlist.
+  \item The grid should be connected.
+  \item The density of the crossword should be as high as possible.
+\end{itemize}
+
+Given a number of rows and columns, construct a crossword with that size and as high a
+density as you can, obeying the first two constraints above.
+You will be scored on the density you obtain.
+To help you out, we've already put in a couple of the letters.
+
+\section*{Input}
+The first line of input contains the test case number $T$ ($0 \le T \le 5$ -- $0$ denotes the sample group).
+The second line of input contains the two integers $R, C$ ($1 \le R, C \le 500$).
+Then follow $R$ lines with $C$ characters each. Each character is either \texttt{.},
+meaning a blank space which you can fill in, or a letter \texttt{a-z}, one of the
+letters we have already filled in for you.
+
+The input files are open (and you're encouraged to solve them offline and simply
+submit a program which prints your solution). They can be accessed through the
+sidebar on the right-hand side of this problem page on Kattis.
+
+\section*{Output}
+Output $R$ lines with $C$ characters each, the filled-in crossword.
+All characters should be either \texttt{a-z} or \texttt{.}, and all filled-in
+letters must be preserved.
+
+The grid of characters \texttt{a-z} must be connected, and every word
+(separated by \texttt{.} or the boundaries of the crossword, in both
+horizontal and vertical direction) must be legal according to the wordlist
+linked above.
+
+There is guaranteed to be a valid solution for each input.
+
+\section*{Scoring}
+Your solution will be tested on 5 test cases, each worth a maximum of 20 points.
+Your score for each test case will be $20$ times the proportion of characters
+of the grid that you have filled in with \texttt{a-z}.

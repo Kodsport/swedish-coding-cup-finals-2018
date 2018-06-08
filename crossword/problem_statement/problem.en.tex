@@ -6,18 +6,22 @@ for the Baltic Olympiad.
 Now for the Coding Cup, we ask you to do the same. There are a couple of rules a good crossword should obey:
 \begin{itemize}
   \item All words should actually exist. To be precise, they should come from \href{http://codingcup.se/2018/wordlist.txt}{this} English-language wordlist.
-  \item The grid should be connected.
+  \item Every letter should be part of a word (i.e., there should be no single 1x1 squares).
+  \item Ideally, the grid should be connected (i.e., it should be possible to move from any \texttt{a-z} square to any other,
+    moving only in the four cardinal directions and without passing any empty squares).
   \item The density of the crossword should be as high as possible.
 \end{itemize}
 
 Given a number of rows and columns, construct a crossword with that size and as high a
 density as you can, obeying the first two constraints above.
 You will be scored on the density you obtain.
+If your grid is not connected, your score will be lowered.
+
 To help you out, we've already put in a couple of the letters.
 
 \section*{Input}
 The first line of input contains the test case number $T$ ($0 \le T \le 5$ -- $0$ denotes the sample group).
-The second line of input contains the two integers $R, C$ ($1 \le R, C \le 500$).
+The second line of input contains the two integers $R, C$ ($1 \le R, C \le 1000$).
 Then follow $R$ lines with $C$ characters each. Each character is either \texttt{.},
 meaning a blank space which you can fill in, or a letter \texttt{a-z}, one of the
 letters we have already filled in for you.
@@ -31,8 +35,8 @@ Output $R$ lines with $C$ characters each, the filled-in crossword.
 All characters should be either \texttt{a-z} or \texttt{.}, and all filled-in
 letters must be preserved.
 
-The grid of characters \texttt{a-z} must be connected, and every word
-(separated by \texttt{.} or the boundaries of the crossword, in both
+Each square with \texttt{a-z} must be part of a word in some or both directions,
+and every word (separated by \texttt{.} or the boundaries of the crossword, in both
 horizontal and vertical direction) must be legal according to the wordlist
 linked above.
 
@@ -42,5 +46,12 @@ There is guaranteed to be a valid solution for each input.
 Your solution will be tested on 5 test cases, each worth a maximum of 20 points.
 Your score for each test case will be $20$ times the proportion of characters
 of the grid that you have filled in with \texttt{a-z}.
+The filled-in letters from the input are also included in this count.
+
+If the grid of characters \texttt{a-z} is not connected, your score for that test case \emph{will be 30\% lower}.
+
 For example, if the sample would have been a real test case, the sample solution
 would score $19 / 80 \cdot 20 = 4.75$ points, since it filled in $19$ squares out of $80$.
+Because the grid is connected, it does not suffer the 30\% penalty.
+
+Your final score will be the maximum score of a single submission.

@@ -20,6 +20,7 @@ faraway = int(cmdlinearg('f'))
 
 wordlist = [x.strip() for x in open('../wordlist.txt')]
 wordlistSet = set(wordlist)
+uncommon = 'zqxjkvbpygfwmuclr'
 
 def transpose(grid):
     n = len(grid)
@@ -95,8 +96,8 @@ for i in range(n):
     line2 = []
     for j in range(m):
         c = line[j]
-        cond = (random.randrange(100) < dens) if dens != -1 else (c not in 'zqxjkvbpygfwmuclr' and random.uniform(0, 1) < 0.8 and i % 2)
-        if cond and (j == 0 or line2[j-1] == '.') and (i == 0 or grid[i-1][j] == '.'):
+        cond = (random.randrange(100) < dens) if dens != -1 else (random.uniform(0, 1) < 0.5 and i % 2)
+        if cond and ((j == 0 or line2[j-1] == '.') and (i == 0 or grid[i-1][j] == '.') or dens == -1):
             if faraway:
                 if i >= 2 and grid[i-2][j] != '.':
                     line2.append('.')

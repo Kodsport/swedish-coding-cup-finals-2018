@@ -62976,7 +62976,7 @@ int main(int argc, char** argv) {
 		w = "";
 	};
 
-	auto solve = [&](istream& is, int N, int M) -> int {
+	auto solve = [&](istream& is, int N, int M) -> pair<int, bool> {
 		int res = 0;
 		string line;
 		vector<string> grid(N);
@@ -63015,19 +63015,34 @@ int main(int argc, char** argv) {
 			swap(N, M);
 		}
 
-		// Check connectivity.
-		if (!connected(grid, N, M)) die("disconnected grid");
+		// Check that every letter is part of a word.
+		rep(i,0,N) rep(j,0,M) {
+			if (grid[i][j] == '.') continue;
+			int dx[4] = {0,0,1,-1};
+			int dy[4] = {1,-1,0,0};
+			bool found = false;
+			rep(d,0,4) {
+				int ni = i + dx[d];
+				int nj = j + dy[d];
+				if (ni < 0 || nj < 0 || ni >= N || nj >= M) continue;
+				if (grid[ni][nj] != '.') found = true;
+			}
+			if (!found) die("1x1 tiles");
+		}
 
-		return res;
+		// Check connectivity.
+		return {res, connected(grid, N, M)};
 	};
 
     try {
         cin.exceptions(cin.failbit | cin.badbit | cin.eofbit);
-		int count = solve(cin, N, M);
+		int count;
+		bool connected;
+		tie(count, connected) = solve(cin, N, M);
         assert_done(cin);
 
 		if (T == 0) accept(0);
-		else accept(20 * (double)count / N / M);
+		else accept(20 * (double)count / N / M * (connected ? 1.0 : 0.7));
     } catch(...) {
         die("IO failure");
     }

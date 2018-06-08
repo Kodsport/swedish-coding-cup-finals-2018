@@ -3,9 +3,9 @@
 void run() {
 	int t = Int(0, 5);
 	Endl();
-	int n = Int(1, 500);
+	int n = Int(1, 1000);
 	Space();
-	int m = Int(1, 500);
+	int m = Int(1, 1000);
 	Endl();
 
 	assert(n == (int)Arg("n"));

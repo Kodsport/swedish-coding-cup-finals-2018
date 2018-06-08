@@ -82,7 +82,7 @@ void check_solution(int R, int C, vector<string>& inp, vector<string>& ans, feed
     // check same squares are tilled
     rep(i,0,R) rep(j,0,C) {
         if (inp[i][j] == '*' && ans[i][j] != '*') feedback("row %d, col %d should be stone", i-1, j-1);
-        if (inp[i][j] == '.' && !isdigit(ans[i][j])) feedback("row %d, col %d should be a seed", i-1, j-1);
+        if (inp[i][j] == '.' && !('1' <= ans[i][j] && ans[i][j] <= '4')) feedback("row %d, col %d should be a seed", i-1, j-1);
     }
 
     // check all 3x3 are same, and non-adjacent

@@ -1,3 +1,4 @@
+// Same as bs_nested_sl.cpp, more or less, except with changed bs ranges
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -31,7 +32,7 @@ int main() {
 		ll a = 0;
 		double b = 0;
 		rep(i,0,K) {
-			ll lo = 0, hi = 1LL << 30;
+			ll lo = 0, hi = 1LL << 45;
 			while (hi - lo > 1) {
 				ll mid = (lo + hi) / 2;
 				if (f2(i, mid) >= deriv) lo = mid;
@@ -43,7 +44,7 @@ int main() {
 		return {a, b};
 	};
 
-	double lo = 0, hi = 1e30;
+	double lo = 0, hi = 1e30 / 3;
 	if (g(lo).first <= N) {
 		cout << setprecision(10) << fixed << g(lo).second << endl;
 		return 0;

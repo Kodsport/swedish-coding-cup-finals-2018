@@ -17,16 +17,20 @@ same = int(eval(cmdlinearg('s')))
 blim = int(float(cmdlinearg('b')))
 clim = int(float(cmdlinearg('c', 1e9)))
 dlim = int(float(cmdlinearg('d')))
+nozero = cmdlinearg('nozero', '')
+b_lo = 1 if 'b' in nozero else 0
+c_lo = 1 if 'c' in nozero else 0
+d_lo = 1 if 'd' in nozero else 0
 assert 0 <= same < k
 
-# add some with d = 0
+# add some with zeroes
 
 fruits = []
 
 for _ in range(k-same):
-    b = random.randint(0, blim)
-    c = random.randint(0, clim)
-    d = random.randint(0, dlim)
+    b = random.randint(b_lo, blim)
+    c = random.randint(c_lo, clim)
+    d = random.randint(d_lo, dlim)
     fruits.append((b,c,d))
 
 for i in range(k-same, k):

@@ -1,8 +1,8 @@
 #include "validator.h"
 
 void run() {
-	int blim = Arg("b");
 	int dlim = Arg("d");
+	int nozer = Arg("nozero", 0);
 
 	Int(1, Arg("n"));
 	Space();
@@ -10,11 +10,16 @@ void run() {
 	Endl();
 
 	for (int i = 0; i < k; i++) {
-		Int(0, blim);
+		int b = Int(0, 1000000000);
 		Space();
-		Int(0, 1000000000);
+		int c = Int(0, 1000000000);
 		Space();
-		Int(0, dlim);
+		int d = Int(0, dlim);
 		Endl();
+		if (nozero) {
+			assert(b > 0);
+			assert(c > 0);
+			assert(d > 0);
+		}
 	}
 }

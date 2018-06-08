@@ -9,6 +9,10 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
+#ifdef GENERATING_TEST_DATA
+#define double long double
+#endif
+
 int main() {
 	cin.sync_with_stdio(0); cin.tie(0);
 	cin.exceptions(cin.failbit);
@@ -28,6 +32,7 @@ int main() {
 	auto f2 = [&](int i, ll x) -> double {
 		if (x == 1) return f(i, 1);
 		// return f(i, x) - f(i, x-1);
+		// Explicit formula for higher precision:
 		return cd[i] / ((d[i] + (double)x) * (d[i] + (double)x - 1)) - b[i];
 	};
 	auto g = [&](double deriv) -> pair<ll, double> {
@@ -50,17 +55,16 @@ int main() {
 
 	double lo = 0, hi = 1e10;
 	auto pa = g(lo);
-	assert(g(hi).first <= N);
+	assert(g(hi).first == 0);
 	if (pa.first <= N) {
 		cerr << "can plant everything: " << pa.first << " vs " << N << endl;
-		cout << setprecision(10) << fixed << pa.second << endl;
+		cout << setprecision(12) << fixed << pa.second << endl;
 		return 0;
 	} else {
 		cerr << "if we plant everything (n = " << pa.first << "):" << endl;
-		cerr << setprecision(10) << fixed << pa.second << endl;
+		cerr << setprecision(12) << fixed << pa.second << endl;
 	}
 
-	assert(g(hi).first == 0);
 	rep(it,0,80) {
 		double mid = (lo + hi) / 2;
 		if (g(mid).first <= N) hi = mid;
@@ -75,5 +79,5 @@ int main() {
 	double additionalCost = (pa1.second - pa2.second) / (double)ndif;
 	assert(additionalCost >= 0);
 	double res = pa2.second + additionalCost * (double)(N - pa2.first);
-	cout << setprecision(10) << fixed << res << endl;
+	cout << setprecision(12) << fixed << res << endl;
 }

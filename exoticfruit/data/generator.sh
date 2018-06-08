@@ -10,8 +10,8 @@ compile gen_random.py
 samplegroup
 limits n=1e12 k=100 d=1e9
 # sample 1
-sample 2
-sample 3
+# sample 2
+# sample 3
 # sample 4
 
 group group1 10

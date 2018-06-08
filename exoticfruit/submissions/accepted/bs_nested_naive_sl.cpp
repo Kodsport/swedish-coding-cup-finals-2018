@@ -23,7 +23,7 @@ int main() {
 
 	auto f = [&](int i, ll x) -> double {
 		if (!x) return 0;
-		return x * (c[i] / (d[i] + x) - b[i]);
+		return (double)x * (c[i] / (d[i] + (double)x) - b[i]);
 	};
 	auto f2 = [&](int i, ll x) -> double {
 		return f(i, x) - f(i, x-1);
@@ -62,8 +62,8 @@ int main() {
 	assert(pa1.first > pa2.first);
 	assert(pa2.first <= N);
 	ll ndif = pa1.first - pa2.first;
-	double additionalCost = (pa1.second - pa2.second) / ndif;
+	double additionalCost = (pa1.second - pa2.second) / (double)ndif;
 	assert(additionalCost >= 0);
-	double res = pa2.second + additionalCost * (N - pa2.first);
+	double res = pa2.second + additionalCost * (double)(N - pa2.first);
 	cout << setprecision(10) << fixed << res << endl;
 }

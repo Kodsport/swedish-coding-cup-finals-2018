@@ -36,9 +36,9 @@ All characters should be either \texttt{a-z} or \texttt{.}, and all filled-in
 letters must be preserved.
 
 Each square with \texttt{a-z} must be part of a word in some or both directions,
-and every word (separated by \texttt{.} or the boundaries of the crossword, in both
-horizontal and vertical direction) must be legal according to the wordlist
-linked above.
+and every word must be legal according to the wordlist linked above.
+A word is defined as a vertical or horizontal connected sequence of letters of length at least 2,
+without any letter directly before or after it.
 
 There is guaranteed to be a valid solution for each input.
 

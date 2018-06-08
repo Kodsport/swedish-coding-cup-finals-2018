@@ -57,7 +57,7 @@ lines = []
 all_lines = []
 
 if 'twopath' in mode:
-    h = random.randint(1, right-left-2)
+    h = random.randint(1, min(right-left-2, bottom-top-2))
     cover(top+1, left+1, top+h+1, right-1)
     top += h+1
     right -= 1

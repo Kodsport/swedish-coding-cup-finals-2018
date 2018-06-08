@@ -15,6 +15,7 @@ int main() {
 	ll N;
 	int K;
 	cin >> N >> K;
+	N = min(N, 1000000LL);
 	vector<double> b(K), c(K), d(K);
 	auto f = [&](int i, ll x) -> double {
 		if (!x) return 0;

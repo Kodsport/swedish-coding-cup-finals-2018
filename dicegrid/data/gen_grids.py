@@ -150,7 +150,7 @@ k = len(blocked)
 
 random.shuffle(blocked)
 
-if True: # random.choice([True, False]):
+if random.choice([True, False]):
     print(n, m, k)
     for (r, c) in blocked:
         print(r+1, c+1)

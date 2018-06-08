@@ -17,6 +17,7 @@ same = int(eval(cmdlinearg('s')))
 blim = int(float(cmdlinearg('b')))
 clim = int(float(cmdlinearg('c', 1e9)))
 dlim = int(float(cmdlinearg('d')))
+maxc = bool(int(cmdlinearg('maxc', 0)))
 nozero = cmdlinearg('nozero', '')
 b_lo = 1 if 'b' in nozero else 0
 c_lo = 1 if 'c' in nozero else 0
@@ -29,7 +30,7 @@ fruits = []
 
 for _ in range(k-same):
     b = random.randint(b_lo, blim)
-    c = random.randint(c_lo, clim)
+    c = clim if maxc else random.randint(c_lo, clim)
     d = random.randint(d_lo, dlim)
     fruits.append((b,c,d))
 

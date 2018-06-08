@@ -42,7 +42,18 @@ tc twoblock-4 gen_two mode=narrow n=2 m=923123123123120 k=20
 tc twoblock-5 gen_two mode=wide m=123123123123123 k=50
 tc twoblock-imp1 gen_random n=2 m=923123123123123 k=45
 
-group group4 15
+group group4 0
+limits n=1e2 m=1e2 k=50 strict=0
+sed -i 's#range: 0 0#range: -1 0#' secret/group4/testdata.yaml
+tc testing-1 gen_random n=100 m=100 k=50
+tc testing-2 gen_random n=30 m=30 k=50
+tc testing-3 gen_grids n=14 m=12 k=50 seed=123
+tc testing-4 gen_grids n=70 m=12 k=50 extra=4
+tc testing-5 gen_grids n=100 m=100 k=50 extra=10
+tc testing-6 gen_grids n=100 m=14 k=50 twos=1
+tc testing-7 gen_grids n=100 m=100 k=50 mode=ruin
+
+group group5 15
 limits n=1e15 m=1e15 k=0 strict=0
 include_group group1
 include_group group2
@@ -59,10 +70,10 @@ tc empty-2 gen_random k=0 n=123123123123123 m=123123123123123
 tc empty-3 gen_random k=0 n=123123123123124 m=123123123123124
 tc empty-4 gen_random k=0 n=123123123123124 m=123123123123123
 
-group group5 20
+group group6 20
 limits n=1e15 m=1e15 k=50 strict=0
 include_group group3
-include_group group4
+include_group group5
 tc twoblock-imp1
 tc large-1 gen_random k=50 n=123123123123123 m=123123123123124
 tc large-2 gen_grids k=49 n=123123123123123 m=123123123123124 extra=10
@@ -71,7 +82,7 @@ tc large-4 gen_grids k=49 n=10 m=123123123123124 mode=ruin
 tc large-5 gen_grids k=50 n=10 m=123123123123124
 tc large-6 gen_grids k=50 n=123123123123124 m=10 mode=twopath mode=nopad
 
-group group6 30
+group group7 30
 limits n=1e15 m=1e15 k=100000 strict=0
 tc empty-1
 tc empty-tall1
@@ -82,6 +93,7 @@ tc large-3
 tc large-4
 tc large-5
 tc large-6
+tc testing-3
 tc huge-1 gen_random k=100000 n=123123123123123 m=123123123123124
 tc huge-2 gen_grids k=99000 n=123123123123124 m=123123123123124 extra=29000
 tc huge-3 gen_grids k=99000 n=123123123123123 m=123123123123123 mode=ruin extra=29000 seed=125

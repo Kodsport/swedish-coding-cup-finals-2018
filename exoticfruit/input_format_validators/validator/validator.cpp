@@ -2,7 +2,7 @@
 
 void run() {
 	int dlim = Arg("d");
-	int nozer = Arg("nozero", 0);
+	int nozero = Arg("nozero", 0);
 
 	Int(1, Arg("n"));
 	Space();

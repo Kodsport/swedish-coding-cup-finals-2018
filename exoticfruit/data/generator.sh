@@ -8,7 +8,7 @@ use_solution bs_nested_sl.cpp opt
 compile gen_random.py
 
 samplegroup
-limits n=1e15 k=100 b=1e9 d=1e9
+limits n=1e15 k=100 d=1e9
 # sample 1
 sample 2
 sample 3

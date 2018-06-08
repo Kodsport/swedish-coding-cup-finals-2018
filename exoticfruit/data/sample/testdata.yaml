@@ -2,4 +2,4 @@ on_reject: continue
 range: -1 0
 accept_score: 0
 grader_flags: no_errors
-input_validator_flags: n=1e15 k=100 b=1e9 d=1e9
+input_validator_flags: n=1e15 k=100 d=1e9

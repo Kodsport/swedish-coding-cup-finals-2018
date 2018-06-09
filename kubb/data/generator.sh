@@ -57,24 +57,29 @@ tc xbad-3 gen_random mode=static n=100 values=0.4,0,0.6
 tc xbad-4 gen_random mode=static n=100 values=0.8,0,0.1
 tc xbad-5 gen_random mode=random n=90 zeroes=ab
 
-group group5 30
-limits mode=standard n=100
-include_group group3
-include_group group4
-tc large-evil1 gen_random mode=evil n=28
-tc large-evil2 gen_random mode=evil n=31
-tc large-evil3 gen_random mode=evil n=34
-tc large-evil4 gen_random mode=evil n=98
-tc large-evil5 gen_random mode=evil n=99
-tc large-evil6 gen_random mode=evil n=100
-tc large-rand1 gen_random mode=random n=28
-tc large-rand2 gen_random mode=random n=31
-tc large-rand3 gen_random mode=random n=32
-tc large-rand4 gen_random mode=random n=50
-tc large-rand5 gen_random mode=random n=70
-tc large-rand6 gen_random mode=random n=100
-tc large-rand7 gen_random mode=random n=99
-tc large-rand8 gen_random mode=random n=55
-tc large-rand9 gen_random mode=random n=64
+group group5 25
+limits mode=even n=100
+tc even-small1 gen_random mode=evil n=4 even=1
+tc even-small2 gen_random mode=random n=2 even=1
+tc even-small3 gen_random mode=random n=13 even=1
+tc even-small4 gen_random mode=random n=14 even=1
+tc even-small5 gen_random mode=evil n=15 even=1
+tc even-small6 gen_random mode=evil n=16 even=1
+tc even-evil1 gen_random mode=evil n=28 even=1
+tc even-evil2 gen_random mode=evil n=28 even=1
+tc even-evil3 gen_random mode=evil n=31 even=1
+tc even-evil4 gen_random mode=evil n=34 even=1
+tc even-evil5 gen_random mode=evil n=98 even=1
+tc even-evil6 gen_random mode=evil n=99 even=1
+tc even-evil7 gen_random mode=evil n=100 even=1
+tc even-rand1 gen_random mode=random n=28 even=1
+tc even-rand2 gen_random mode=random n=31 even=1
+tc even-rand3 gen_random mode=random n=32 even=1
+tc even-rand4 gen_random mode=random n=50 even=1
+tc even-rand5 gen_random mode=random n=70 even=1
+tc even-rand6 gen_random mode=random n=100 even=1
+tc even-rand7 gen_random mode=random n=99 even=1
+tc even-rand8 gen_random mode=random n=55 even=1
+tc even-rand9 gen_random mode=random n=64 even=1
 
 cleanup_programs

@@ -14,6 +14,7 @@ random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
 zeroes = cmdlinearg('zeroes', '')
 mode = cmdlinearg('mode')
+even = int(cmdlinearg('even', 0))
 
 if mode == 'random':
     a = random.uniform(0, 1)
@@ -29,6 +30,9 @@ else:
     a = AC + random.uniform(AC - eps, AC + eps)
     b = B + random.uniform(B - eps, B + eps)
     c = AC + random.uniform(AC - eps, AC + eps)
+
+if even:
+    a = c = (a + c) / 2
 
 for x in zeroes:
     if x == 'a': a = 0

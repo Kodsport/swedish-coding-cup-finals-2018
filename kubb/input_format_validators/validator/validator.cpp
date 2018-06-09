@@ -20,6 +20,9 @@ void run() {
 	else if (mode == "bad") {
 		assert(b == 0);
 	}
+	else if (mode == "even") {
+		assert(a == c);
+	}
 	else {
 		assert(mode == "standard");
 	}

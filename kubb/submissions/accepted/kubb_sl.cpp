@@ -113,10 +113,10 @@ int main() {
 	if (N <= LIM) {
 		res = solve(N, a, b, c);
 	} else {
-		int x = LIM - ((N ^ LIM) & 1);
+		int x = LIM;
 		double r2 = solve(x, a, b, c);
-		double r1 = solve(x-2, a, b, c, false);
-		res = r2 + (r2 - r1) * (N - x) / 2;
+		double r1 = solve(x-1, a, b, c, false);
+		res = r2 + (r2 - r1) * (N - x);
 	}
 	cout << setprecision(15) << fixed << res << endl;
 	return 0;

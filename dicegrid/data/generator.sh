@@ -2,7 +2,6 @@
 PPATH=$(realpath ..)
 . ../../testdata_tools/gen.sh
 
-setup_dirs
 use_solution fancy_sl.cpp
 
 compile gen_random.py
@@ -18,6 +17,7 @@ sample 4
 
 group group1 5
 limits n=1 m=1e15 k=0 strict=0
+tc 1 # 1 6 0
 tc line-1 gen_random k=0 n=1 m=2
 tc line-2 gen_random k=0 n=1 m=1000000000000000
 tc line-3 gen_random k=0 n=1 m=123126371231123
@@ -26,6 +26,7 @@ tc line-5 gen_random k=0 n=1 m=999999999999997
 
 group group2 10
 limits n=2 m=1e5 k=0 strict=1
+tc 2 # 2 5 0
 tc two-1 gen_random k=0 n=2 m=1
 tc two-2 gen_random k=0 n=2 m=100000
 tc two-3 gen_random k=0 n=2 m=99999
@@ -35,6 +36,7 @@ tc two-5 gen_random k=0 n=2 m=99997
 group group3 10
 limits n=2 m=1e15 k=50 strict=1
 include_group group2
+tc 2 # 2 5 0
 tc twoblock-1 gen_random n=2 m=923123123123123 k=1
 tc twoblock-2 gen_two mode=narrow n=2 m=923123123123122 k=40
 tc twoblock-3 gen_two mode=narrow n=2 m=923123123123121 k=30
@@ -44,6 +46,10 @@ tc twoblock-imp1 gen_random n=2 m=923123123123123 k=45
 
 group group4 0
 limits n=1e2 m=1e2 k=50 strict=0
+tc 1 # 1 6 0
+tc 2 # 2 5 0
+tc 3 # 4 3 2
+tc 4 # 5 2 2
 sed -i 's#range: 0 0#range: -1 0#' secret/group4/testdata.yaml
 tc testing-1 gen_random n=100 m=100 k=50
 tc testing-2 gen_random n=30 m=30 k=50
@@ -57,6 +63,8 @@ group group5 15
 limits n=1e15 m=1e15 k=0 strict=0
 include_group group1
 include_group group2
+tc 1 # 1 6 0
+tc 2 # 2 5 0
 tc empty-tall1 gen_random k=0 n=123123123123123 m=1
 tc empty-tall2 gen_random k=0 n=123123123123124 m=1
 tc empty-tall3 gen_random k=0 n=123123123123125 m=1
@@ -72,8 +80,15 @@ tc empty-4 gen_random k=0 n=123123123123124 m=123123123123123
 
 group group6 20
 limits n=1e15 m=1e15 k=50 strict=0
+include_group group1
+include_group group2
 include_group group3
+include_group group4
 include_group group5
+tc 1 # 1 6 0
+tc 2 # 2 5 0
+tc 3 # 4 3 2
+tc 4 # 5 2 2
 tc twoblock-imp1
 tc large-1 gen_random k=50 n=123123123123123 m=123123123123124
 tc large-2 gen_grids k=49 n=123123123123123 m=123123123123124 extra=10
@@ -84,6 +99,16 @@ tc large-6 gen_grids k=50 n=123123123123124 m=10 mode=twopath mode=nopad
 
 group group7 30
 limits n=1e15 m=1e15 k=100000 strict=0
+include_group group1
+include_group group2
+include_group group3
+include_group group4
+include_group group5
+include_group group6
+tc 1 # 1 6 0
+tc 2 # 2 5 0
+tc 3 # 4 3 2
+tc 4 # 5 2 2
 tc empty-1
 tc empty-tall1
 tc twoblock-imp1
@@ -107,5 +132,3 @@ tc huge-10 gen_grids k=100000 n=18003 m=123123123123126 twos=1 extra=1000
 tc huge-11 gen_grids k=100000 n=123123123123124 m=18000 mode=twopath seed=27
 tc huge-12 gen_grids k=100000 n=123123123123124 m=28000 mode=twopath each=500 seed=1
 tc huge-13 gen_grids k=100000 n=123123123123124 m=28000 mode=twopath each=500 seed=2
-
-cleanup_programs

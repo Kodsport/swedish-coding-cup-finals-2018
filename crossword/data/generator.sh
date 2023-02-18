@@ -2,14 +2,15 @@
 PPATH=$(realpath ..)
 . ../../testdata_tools/gen.sh
 
-setup_dirs
-use_solution empty.cpp
+REQUIRE_SAMPLE_REUSE=0
+
+use_solution ../partially_accepted/empty.cpp
 
 compile gen_random.py pypy
 
 samplegroup
 limits t=0 n=8 m=10
-# sample 1
+sample_manual 1
 
 gr() {
 	g=$1
@@ -19,7 +20,7 @@ gr() {
 	f=$5
 	group group$g 20
 	limits t=$g n=$n m=$m
-	tc $g gen_random t=$g n=$n m=$m f=$f d=$d seed=$g
+	tc c$g gen_random t=$g n=$n m=$m f=$f d=$d seed=$g
 }
 
 gr 1 50 50 0 0
@@ -27,5 +28,3 @@ gr 2 100 100 -1 0
 gr 3 100 100 10 1
 gr 4 100 100 35 0
 gr 5 8 1000 30 1
-
-cleanup_programs
